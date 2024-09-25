@@ -9,14 +9,15 @@ class Blueprint extends IlluminateBlueprint
     /**
      * Add a geometry column on the table.
      *
-     * @param string   $column
-     * @param null|int $srid
+     * @param string      $column
+     * @param null|string $subtype
+     * @param null|int    $srid
      *
      * @return \Illuminate\Support\Fluent
      */
-    public function geometry($column, $srid = null)
+    public function geometry($column, $subtype = null, $srid = null)
     {
-        return $this->addColumn('geometry', $column, compact('srid'));
+        return $this->addColumn('geometry', $column, compact('subtype', 'srid'));
     }
 
     /**
