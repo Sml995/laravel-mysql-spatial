@@ -14,9 +14,9 @@ class Blueprint extends IlluminateBlueprint
      *
      * @return \Illuminate\Support\Fluent
      */
-    public function geometry($column, $srid = null)
+    public function geometry($column, $subtype = null, $srid = null)
     {
-        return $this->addColumn('geometry', $column, compact('srid'));
+        return $this->addColumn('geometry', $column, compact('subtype', 'srid'));
     }
 
     /**
