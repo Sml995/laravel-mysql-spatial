@@ -3,13 +3,17 @@
 namespace Grimzy\LaravelMysqlSpatial\Eloquent;
 
 use Illuminate\Database\Query\Expression;
+use Illuminate\Database\Grammar;
 
+/**
+ * Removes the the ST_GeomFromText 'axis-order=long-lat' argument that fails on MariaDB.
+ */
 class SpatialExpression extends Expression
 {
-    #[\ReturnTypeWillChange]
-    public function getValue($grammar)
+
+    public function getValue(Grammar $grammar)
     {
-        return "ST_GeomFromText(?, ?, 'axis-order=long-lat')";
+        return "ST_GeomFromText(?, ?)";
     }
 
     public function getSpatialValue()
